@@ -135,4 +135,3 @@ testCompleto<-test
 testCompleto$predRF<-prediccionRF1
 
 cfmRandomForest <- confusionMatrix(testCompleto$predRF, as.factor(testCompleto$Clasificacion))
-
