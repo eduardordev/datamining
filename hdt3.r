@@ -21,7 +21,7 @@ library(randomForest)
 
 datosTrain <- read.csv("C:/Users/Mustella 3D/Desktop/train.csv")
 theme_set(theme_pubr())
-# Ejercicio 3
+# Ejercicio 3 al 11
 
 wss <- (nrow(datosTrain[,c(1,2,44:53,81)])-1)*sum(apply(datosTrain[,c(1,2,44:53,81)],2,var))
 
