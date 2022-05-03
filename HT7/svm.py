@@ -73,12 +73,12 @@ X = sklearn.preprocessing.scale(X)
 kmeans.fit(X)
 train['KmeansCluster'] = kmeans.labels_
 
-X = test[["OverallQual", "YearBuilt", "YearRemodAdd", "TotalBsmtSF", "1stFlrSF", "GrLivArea", "FullBath", 
+X = train[["OverallQual", "YearBuilt", "YearRemodAdd", "TotalBsmtSF", "1stFlrSF", "GrLivArea", "FullBath", 
                    "GarageYrBlt", "GarageCars", "GarageArea"]]
-Y = test["KmeansCluster"]
+y = train["KmeansCluster"]
 
 #ejercicio del 4 al 6
-X_train, X_test,y_train, y_test = train_test_split(X, Y,test_size=0.3,train_size=0.7)
+X_train, X_test,y_train, y_test = train_test_split(X, y,test_size=0.3,train_size=0.7)
 
 models = (
     svm.SVC(kernel="linear", C=200),
@@ -105,8 +105,8 @@ errores_l = []
 for i in range(0, 6):
     errores = 0
     start = time.time()
-    models_r[i].fit(X_train, y_train)
-    y_pred = models_r[i].predict(X_test)
+    models[i].fit(X_train, y_train)
+    y_pred = models[i].predict(X_test)
     end = time.time()
     puntaje = metrics.accuracy_score(y_test, y_pred)
     print("Nombre del modelo: " + titles[i])
